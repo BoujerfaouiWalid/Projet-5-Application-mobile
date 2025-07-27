@@ -10,7 +10,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")  // correspond à la colonne SQL "name"
+    @Column(name = "name")
     private String name;
 
     @Column(unique = true)
@@ -25,7 +25,6 @@ public class User {
     public User() {}
 
     // Getters & Setters
-
     public Long getId() {
         return id;
     }
@@ -60,5 +59,19 @@ public class User {
 
     public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    public String getMotDePasse() {
+        return "";
+    }
+
+    public String getNom() {
+        return "";
+    }
+
+    public void setNom(String nom) {
+    }
+
+    public void setMotDePasse(String encode) {
     }
 }

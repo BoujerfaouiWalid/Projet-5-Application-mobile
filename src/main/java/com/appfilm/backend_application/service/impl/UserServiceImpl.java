@@ -23,30 +23,30 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(RegisterRequest request) {
-        if (userRepository.findByEmail(request.email).isPresent()) {
+        if (userRepository.findByEmail(request.getEmail()).isPresent()) {
             throw new RuntimeException("Email déjà utilisé");
         }
 
         User user = new User();
-        user.setNom(request.nom);
-        user.setEmail(request.email);
-        user.setMotDePasse(passwordEncoder.encode(request.motDePasse));
+        user.setName(request.getNom()); // ⚠️ `setName` car le champ s'appelle `name` dans User
+        user.setEmail(request.getEmail());
+        user.setPasswordHash(passwordEncoder.encode(request.getMotDePasse())); // ⚠️ `setPasswordHash`
 
         userRepository.save(user);
     }
 
     @Override
     public LoginResponse login(LoginRequest request) {
-        Optional<User> userOpt = userRepository.findByEmail(request.email);
+        Optional<User> userOpt = userRepository.findByEmail(request.getEmail());
         if (userOpt.isEmpty()) {
             throw new RuntimeException("Email incorrect");
         }
 
         User user = userOpt.get();
-        if (!passwordEncoder.matches(request.motDePasse, user.getMotDePasse())) {
+        if (!passwordEncoder.matches(request.getMotDePasse(), user.getPasswordHash())) { // ⚠️ `getPasswordHash`
             throw new RuntimeException("Mot de passe incorrect");
         }
 
-        return new LoginResponse(user.getId(), user.getNom(), user.getEmail());
+        return new LoginResponse(user.getId(), user.getName(), user.getEmail()); // ⚠️ `getName`
     }
 }
