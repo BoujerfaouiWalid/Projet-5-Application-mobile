@@ -21,11 +21,12 @@ public class FilmServiceImpl implements FilmService {
 
     @Override
     public Film getFilmById(Long id) {
-        return filmRepository.findById(id).orElseThrow(() -> new RuntimeException("Film introuvable"));
+        return filmRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Film introuvable"));
     }
 
     @Override
     public List<Film> search(String keyword) {
-        return filmRepository.findByTitreContainingIgnoreCase(keyword);
+        return filmRepository.findByTitleContainingIgnoreCase(keyword); // ✅ Correction ici
     }
 }
