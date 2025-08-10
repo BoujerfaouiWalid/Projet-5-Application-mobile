@@ -1,0 +1,71 @@
+<com.google.android.material.appbar.AppBarLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="@android:color/black">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Netflix Logo -->
+            <ImageView
+                android:id="@+id/logoNetflix"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/netflix_n_red"
+                android:contentDescription="Netflix Logo"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:padding="8dp" />
+
+            <!-- Center Tabs -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:id="@+id/tabTVShows"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TV SHOWS"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="true"
+                    android:padding="12dp"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tabMovies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MOVIES"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="true"
+                    android:padding="12dp"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tabMyList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MY LIST"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="true"
+                    android:padding="12dp"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+</com.google.android.material.appbar.AppBarLayout>
